@@ -1,5 +1,5 @@
 ---
-title: "Jetpack Composeでのリスト実装で気をつける３つのこと"
+title: "Jetpack Composeのリスト実装でパフォーマンスに関して気をつける３つのこと"
 emoji: "🚀"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["JetpackCompose","Android"]
@@ -149,7 +149,9 @@ private fun ItemMovie(item: ItemData, width: Dp, isPlay: Boolean) {
 # どういう問題があるのか？その対策は？
 具体的な実装例を見てきましたが、これのどこに問題があり対策はそれぞれどうするのかを見ていきたいと思います。
 
-## 問題1 少しスクロールするだけでRecomoseされてしまう
+## 少しスクロールするだけでRecomoseされてしまう
+
+### 問題
 問題があるのはこの部分です。
 
 ```kotlin
@@ -206,7 +208,7 @@ private fun InstagramSearchListLayout(
 `playMovieIndex`はLazyColumnのitemsIndexedに渡しているのですが、`playMovieIndex`はスクロール状態を読み取るので、InstagramSearchListLayout Composable全体がスクロールするたびにReComposeされるため、`LazyColumn`と`GridRowItem` がRecomposeされていました。
 
 
-## 対策1 [`derivedStateOf`](https://developer.android.com/jetpack/compose/side-effects?hl=ja#derivedstateof)を使う
+### 対策 [`derivedStateOf`](https://developer.android.com/jetpack/compose/side-effects?hl=ja#derivedstateof)を使う
 
 `playMovieIndex`の部分を`derivedStateOf`を使って次のように囲うだけです。
 
@@ -239,8 +241,8 @@ val playMovieIndex by remember {
 
 先程の動画をみたときに動画がRecomposeされるのはいいのですが、よくみるとなにも変更がないはずの画像までRecomposeされていることがわかるかと思います。何も変更がない画像はRecomposeしたくないと思うので、次はそちらについて見ていきます。
 
-## 問題2 変更がないComposable関数がRecomposeされてしまう
-
+## 変更がないComposable関数がRecomposeされてしまう
+### 問題
 
 先程と繰り返しになりますが、変更がないはずの画像までRecomposeされてしまう問題について考えてみます。
 
@@ -267,7 +269,7 @@ private fun GridRowItem(
 これまで見てきてように、スクロールに依存して`isPlay`が変わる可能性があります。引数の値が更新されると、そのComposable関数（ここでは`GridRowItem`）はRecomposeされます。
 そのため、`GridRowItem`内の動画（`ItemMovie`）はRecomposeされても良いかもしれませんが、画像（`GridItemImages`）までRecomposeされてしまっていました。
 
-## 対策2 読み取りを遅延する
+### 対策 読み取りを遅延する
 
 対策としては、`isPlay`の読み取りを遅延させればよいです。
 読み取りを遅延させるというのは、Booleanを返す関数ラムダを渡すようにするということです。
@@ -300,12 +302,12 @@ private fun GridRowItem(
 ただ、よく見ると変更されない動画（`ItemMovie`）もRecomposeされてるので、次はそれについて見ていきます。
 
 
-## 問題3 変更がないComposable関数がRecomposeされてしまう(パート２)
-
+## 変更がないComposable関数がRecomposeされてしまう(パート２)
+### 問題
 動画だけRecomposeされるになったのはいいのですが、変更のない動画（`ItemMovie`）もRecomposeされてしまっています。
 そこまで気にしなくてもいいかもしれませんが、変更のない動画をRecomposeしないようにもできるので紹介だけしておきます。
 
-## 対策3 LazyListStateを渡す
+### 対策 LazyListStateを渡す
 
 対策としては、スクロールするたびに変更してほしいのは動画だけなので、`ItemMovie` Composable関数内でlistのstateを読み取るという方法です。
 
@@ -353,7 +355,7 @@ isPlayがtrueからfalseになったものと、falseからtrueになった２�
 # まとめ
 - UIの状態を更新したいタイミング以上にRecomposeされている場合は、`derivedStateOf`を使うと良いです。今回はスクロール状態の読み取りでしたが、[このYoutube](https://youtu.be/ahXLwg2JYpc?t=982)では、テキストフィールドに文字を入力してある条件を満たさないとボタンが有効にならない仕様があったときの例を紹介されていました。
 - Composableの引数にラムダを渡すとラムダは変更されないのでRecomposeされないということを紹介しました。Composeには３つのフェーズ（Composition、Layout、Draw）があって、Compositionフェーズをスキップしているからなのですが、その説明は[このあたりのYoutube](https://youtu.be/ahXLwg2JYpc?t=248)がわかりやすいかなと思います。
-- LazyListStateインスタンスを、スクロールの状態によって更新されるComposableまで渡していくというのを紹介しました。とくにどこかを参考にしたわけではなくやってみたら、変更がないComposableがRecomposeしなくなっただけで正しい方法じゃないかもしれませんが、忘れないために書いた感じです。
+- LazyListStateインスタンスを、スクロールの状態によって更新されるComposableまで渡していくというのを紹介しました。とくにどこかを参考にしたわけではなくやってみたら、変更がないComposableがRecomposeしなくなっただけで正しい方法じゃないかもしれませんが、LazyListStateを渡すのは意外とアリなんだというのを忘れないために書いた感じです。
 
 # おわりに
 パフォーマンスに関しての動画を見ていると、必ずと言っていいほど免責事項の説明があります。リリースモードで確認しろ、R8有効にしろ、対策があらゆる環境で有効ではないかもしれない、計測しろなどなど。
