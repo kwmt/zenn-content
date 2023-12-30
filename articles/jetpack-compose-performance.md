@@ -3,7 +3,7 @@ title: "Jetpack Composeのリスト実装でパフォーマンスに関して気
 emoji: "🚀"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["JetpackCompose","Android"]
-published: false
+published: true
 ---
 
 # はじめに
