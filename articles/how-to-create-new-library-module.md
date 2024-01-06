@@ -3,7 +3,7 @@ title: "Android Studioでライブラリモジュールの作り方"
 emoji: "📚"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Android","gradle"]
-published: false
+published: true
 ---
 
 最近よくモジュールを作るのでメモしておく。
