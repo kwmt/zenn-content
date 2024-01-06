@@ -3,7 +3,8 @@ title: "Custom Gradle Pluginの作り方"
 emoji: "🐘"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Android","gradle"]
-published: false
+published: true
+published_at: 2024-01-07 10:00
 ---
 
 # はじめに
