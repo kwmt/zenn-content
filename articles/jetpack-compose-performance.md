@@ -24,9 +24,9 @@ https://github.com/kwmt/JetpackComposePlayGround/tree/main/app/src/main/java/net
 - グレーの正方形っぽいのが画像を表示する領域で
 - 縦長の部分が動画
 
-だと思ってください。緑色は動画再生中を表していて、赤は動画が止まっていることを表しています。始めは一番目の動画が再生中の状態で、スクロールすると二番目の動画再生され、再生中だった一番目の動画は停止します。このように、スクロールすると再生する動画が次々と変わっていくように実装しました。（切り替わるタイミングはもう少し考慮の余地があると思いますが、今回の説明ではこだわっても仕方ないので適当です）
+だと思ってください。緑色は動画再生中を表していて、赤は動画が止まっていることを表しています。始めは1番目の動画が再生中の状態で、スクロールすると2番目の動画再生され、再生中だった一番目の動画は停止します。このように、スクロールすると再生する動画が次々と変わっていくように実装しました。（切り替わるタイミングはもう少し考慮の余地があると思いますが、今回の説明ではこだわっても仕方ないので適当です）
 
-想像してみてください。画像が見えてるところだけでも12枚表示し、動画は３つ表示されていて、動画はそのうちの１つしか再生されないとはいえ、これらが一気に表示する処理は重いのでは？と想像できるのではないでしょうか。
+想像してみてください。画像が見えてるところだけでも12枚表示し、動画は3つ表示されていて、動画はそのうちの1つしか再生されないとはいえ、これらが一気に表示する処理は重いのでは？と想像できるのではないでしょうか。
 
 ## 構造の説明
 次に、説明のためにどのような構造になっているかを説明します。
@@ -149,7 +149,7 @@ private fun ItemMovie(item: ItemData, width: Dp, isPlay: Boolean) {
 # どういう問題があるのか？その対策は？
 具体的な実装例を見てきましたが、これのどこに問題があり対策はそれぞれどうするのかを見ていきたいと思います。
 
-## 少しスクロールするだけでRecomoseされてしまう
+## 少しスクロールするだけでRecomposeされてしまう
 
 ### 問題
 問題があるのはこの部分です。
@@ -168,7 +168,7 @@ val playMovieIndex =
 
 ![](https://storage.googleapis.com/zenn-user-upload/6bffb3ae3d86-20231230.gif)
 
-`LazyColumn` とitemとして作っている `GridRowItem`のRecompositionカウントが、少しスクロールしただけで数十回Recomoseされていることがわかると思います。
+`LazyColumn` とitemとして作っている `GridRowItem`のRecompositionカウントが、少しスクロールしただけで数十回Recomposeされていることがわかると思います。
 
 
 
@@ -205,7 +205,7 @@ private fun InstagramSearchListLayout(
     }
 }
 ```
-`playMovieIndex`はLazyColumnのitemsIndexedに渡しているのですが、`playMovieIndex`はスクロール状態を読み取るので、InstagramSearchListLayout Composable全体がスクロールするたびにReComposeされるため、`LazyColumn`と`GridRowItem` がRecomposeされていました。
+`playMovieIndex`はLazyColumnのitemsIndexedに渡しているのですが、`playMovieIndex`はスクロール状態を読み取るので、InstagramSearchListLayout Composable全体がスクロールするたびにRecomposeされるため、`LazyColumn`と`GridRowItem` がRecomposeされていました。
 
 
 ### 対策 [`derivedStateOf`](https://developer.android.com/jetpack/compose/side-effects?hl=ja#derivedstateof)を使う
@@ -233,7 +233,7 @@ val playMovieIndex by remember {
 ちなみに、`derivedStateOf`を使わなかったら[lintが警告](https://googlesamples.github.io/android-custom-lint-rules/checks/FrequentlyChangedStateReadInComposition.md.html)してくれるので、その警告を無視しないようにすると良さそうです。
 ![](https://storage.googleapis.com/zenn-user-upload/72fb16ed8942-20231230.png)
 
-少しスクロールするだけで数十回もRecomoseされてしまう問題の対策はこれだけなんですが、動画をよく見るとたまに青いグラデーションがハイライトされてるのが確認できると思うのですが、ハイライトされるのはRecomposeされてることを意味します。（これは[LayoutInspectorの機能](https://developer.android.com/jetpack/compose/tooling/layout-inspector?hl=ja#recomposition-counts)です。ちなみにハイライトされるカラーも選択できます。）
+少しスクロールするだけで数十回もRecomposeされてしまう問題の対策はこれだけなんですが、動画をよく見るとたまに青いグラデーションがハイライトされてるのが確認できると思うのですが、ハイライトされるのはRecomposeされてることを意味します。（これは[LayoutInspectorの機能](https://developer.android.com/jetpack/compose/tooling/layout-inspector?hl=ja#recomposition-counts)です。ちなみにハイライトされるカラーも選択できます。）
 
 
 ![](https://storage.googleapis.com/zenn-user-upload/cec8f6aa80be-20231230.png)
@@ -295,7 +295,7 @@ private fun GridRowItem(
 
 これによって、`isPlay`はラムダになったので、`isPlay`の値が変わることはなく、GridRowItem関数はRecomposeされないということになり、画像（`GridItemImages`）もRecomposeされなくなります。
 
-下の動画は、この対策を実行した動画です。動画だけハイライトされていて、画像はハイライト表示されない事がわかるかと思います。
+下の動画は、この対策を実行した動画です。動画（`ItemMovie`）だけハイライトされていて、画像（`GridItemImages`）はハイライト表示されていない事がわかるかと思います。
 
 ![](https://storage.googleapis.com/zenn-user-upload/2215b0e2ec42-20231230.gif)
 
