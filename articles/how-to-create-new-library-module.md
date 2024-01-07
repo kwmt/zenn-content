@@ -91,3 +91,16 @@ appモジュールで使えることが確認できました。(以下の図はa
 
 
 [^2]: https://docs.gradle.org/7.0/release-notes.html#new-features-and-usability-improvements
+
+# モジュールの削除方法
+
+モジュールを削除するのも意外と困るのでメモしておきます。
+
+単純に削除したいモジュールを右クリックしてDeleteを探すだけだと無いですし、⌘+Deleteで消すことができません。
+
+![](https://storage.googleapis.com/zenn-user-upload/28e3cf4a63ae-20240107.png)
+
+Deleteできるようにするには、`settings.gradle(.kts)`に書かれてる `include(":sample")` のような消したいモジュールのincludeを削除して、Sync Gradleします。完了したらもう一度消したいモジュールを右クリックしてみると、`Delete`が存在するので、クリックすると削除できます。（⌘+Deleteでも削除可能になります）
+
+
+![](https://storage.googleapis.com/zenn-user-upload/3119f14d9b6d-20240107.png)
