@@ -10,7 +10,7 @@ published: true
 Jetpack Composeのリスト実装はほんとに簡単で直感的に書けちゃうなと思いますし、それがいいところでもあると思うのですが、パフォーマンス観点で気をつけたほうがいいなと思うことがあったので、具体的な実装を示しながら、どういう問題があり、どう解決するとよさそうかを紹介していこうと思います。
 以下に出てくるコードは下のリポジトリにおいています。
 
-https://github.com/kwmt/JetpackComposePlayGround/tree/main/app/src/main/java/net/kwmt27/jetpackcomposeplayground/list/instagram
+https://github.com/kwmt/JetpackComposePlayGround/tree/main/feature/samples/src/main/java/net/kwmt27/jetpackcomposeplayground/feature/samples/list/instagram
 
 # 具体的な実装例
 
