@@ -2,7 +2,7 @@
 title: "Next.jsアプリケーションを新規作成して、Cloudflare Pagesにデプロイするまで"
 emoji: "⛳"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["nextjs", "cloudflare pages"]
+topics: ["nextjs", "cloudflarepages"]
 published: true
 ---
 
