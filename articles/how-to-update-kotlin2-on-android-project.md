@@ -150,6 +150,21 @@ nowinandroidが参考になるかもです。
 
 https://github.com/android/nowinandroid/blob/85129e4660f7a27c7081f4ac21169d19db89fbb6/build-logic/convention/src/main/kotlin/com/google/samples/apps/nowinandroid/AndroidCompose.kt#L54-L71
 
+# IDEサポートを有効するには
+
+デフォルトでは、IntelliJ IDEAとAndroid Studioは、コード解析、コード補完、ハイライト、その他のIDE関連機能で以前のコンパイラを引き続き使用します。
+IDEでKotlin 2.0を完全に使用するには、「Enable K2 Kotlin Mode」にチェックを入れて再起動します。
+
+![](https://storage.googleapis.com/zenn-user-upload/fd91d5682476-20240621.png)
+
+https://kotlinlang.org/docs/whatsnew20.html#try-the-kotlin-k2-compiler-in-kotlin-playground
+
+
+K2 Kotlin Modeはalpha版で、2024.1から利用できます。コードハイライトとコード補完のパフォーマンスと安定性が大幅に改善されてるが、まだすべてのIDE機能がサポートされているわけではないとのこと。
+何がサポートされてるかは以下のブログを参考
+
+https://blog.jetbrains.com/idea/2024/03/k2-kotlin-mode-alpha-in-intellij-idea/
+
 # 参考
 
 https://developer.android.com/develop/ui/compose/compiler?hl=ja
