@@ -1,5 +1,5 @@
 ---
-title: "React Foundationsを呼んでわからなかったことのメモ"
+title: "React Foundationsを読んでわからなかったことのメモ"
 emoji: "🐕"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["React","Nextjs"]
