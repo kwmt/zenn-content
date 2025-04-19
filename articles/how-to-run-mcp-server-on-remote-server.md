@@ -1,16 +1,10 @@
-+++
-date = "2024-04-19T17:30:00+09:00"
-title = "MCPサーバーをリモートで動かすには？"
-draft = false
-toc = true
-slug = ""
-author = "kwmt27"
-categories = ["MCP"]
-tags = ["MCP"]
-keywords = ["MCP"]
-
-+++
-
+---
+title: "MCPサーバーをリモートで動かすには？"
+emoji: "☁️"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: ["MCP"]
+published: true
+---
 # はじめに
 
 MCPサーバーはローカルで実行してMCPクライント(Clineなど)から使うのが一般的？だと思いますが、リモートサーバーで動かせないのかな？と思って調べたら、Cloudflareがそれっぽいの作ってるみたいなので[Build a Remote MCP server](https://developers.cloudflare.com/agents/guides/remote-mcp-server/)を見ながら動かしてみました。
