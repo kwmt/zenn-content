@@ -7,7 +7,7 @@ published: true
 ---
 
 # はじめに
-MCPドキュメントのQuickstatｎ For Client Developersを読みながらうごかしたことをメモしておこうと思います。
+MCPドキュメントのQuickstartの For Client Developersを読みながら動かしたことをメモしておこうと思います。
 https://modelcontextprotocol.io/quickstart/client
 
 今回はTypescriptでやっていきます。
