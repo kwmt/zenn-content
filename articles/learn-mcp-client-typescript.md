@@ -1,8 +1,8 @@
 ---
-title: "MCP Quickstat For Client Developersを読む(typescript)"
+title: "MCP Quickstart For Client Developersを読む(TypeScript)"
 emoji: "💬"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["MCP", "typescript"]
+topics: ["MCP", "TypeScript"]
 published: true
 ---
 
@@ -10,7 +10,7 @@ published: true
 MCPドキュメントのQuickstartの For Client Developersを読みながら動かしたことをメモしておこうと思います。
 https://modelcontextprotocol.io/quickstart/client
 
-今回はTypescriptでやっていきます。
+今回はTypeScriptでやっていきます。
 
 # 読んでいく
 
