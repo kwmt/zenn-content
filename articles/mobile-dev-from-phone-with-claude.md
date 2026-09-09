@@ -18,15 +18,16 @@ published: false
 
 大事なのは、**スマホは窓でしかない**ということです。
 
-```
-iPhone（Claudeアプリ）
-   ↕ Anthropic のサーバー経由
-自宅の Mac（Claude Code が動いている）
-   ├─ ビルド・テスト・git 操作はここで走る
-   ├─→ TestFlight へアップロード      … 外にいるときはこっち
-   └─→ xcrun devicectl で直接インストール … 同じ Wi-Fi にいるときはこっち
-        ↓
-      手元の iPhone で確認
+```mermaid
+graph TD
+    Phone["iPhone<br/>Claude アプリで指示する<br/>実機で確かめる"]
+    Mac["手元の Mac<br/>Claude Code<br/>ビルド・テスト・git 操作"]
+    TF["TestFlight"]
+
+    Phone -->|"指示<br/>（Anthropic のサーバー経由）"| Mac
+    Mac -->|"外にいるとき"| TF
+    TF -->|"入れて触る"| Phone
+    Mac -->|"同じ Wi-Fi にいるとき<br/>xcrun devicectl で直接"| Phone
 ```
 
 ドキュメントにもはっきり書いてあります。
