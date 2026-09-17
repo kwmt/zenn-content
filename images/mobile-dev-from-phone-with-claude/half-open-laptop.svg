@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#FFFFFF"/>
+
+  <!-- 地面 -->
+  <line x1="70" y1="470" x2="830" y2="470" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- 動きを表す線 -->
+  <g stroke="#D1D5DB" stroke-width="10" stroke-linecap="round">
+    <line x1="140" y1="250" x2="240" y2="250"/>
+    <line x1="110" y1="312" x2="228" y2="312"/>
+    <line x1="150" y1="374" x2="238" y2="374"/>
+  </g>
+
+  <g stroke="#1F2937" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- 奥の腕（後ろに振っている） -->
+    <path d="M 378 208 L 340 272 L 348 332" stroke="#9CA3AF"/>
+
+    <!-- 脚 -->
+    <path d="M 372 300 L 332 372 L 306 452"/>
+    <path d="M 306 452 L 276 456"/>
+    <path d="M 372 300 L 436 360 L 454 452"/>
+    <path d="M 454 452 L 492 452"/>
+
+    <!-- 胴 -->
+    <path d="M 388 162 L 372 300"/>
+
+    <!-- 頭 -->
+    <circle cx="384" cy="118" r="40" fill="#FFFFFF"/>
+
+    <!-- 手前の腕（ひじを曲げて、手のひらでPCを受ける） -->
+    <path d="M 388 206 L 400 284 L 474 272"/>
+  </g>
+
+  <!-- 片手で持った、半開きのノートPC -->
+  <g transform="translate(424,250) rotate(-4)">
+    <!-- すき間から漏れる光 -->
+    <polygon points="0,0 112,0 38,-62" fill="#F2B48C" opacity="0.28"/>
+
+    <!-- 本体 -->
+    <rect x="0" y="0" width="112" height="13" rx="4" fill="#FFFFFF" stroke="#1F2937" stroke-width="6"/>
+
+    <!-- 画面（半開き。本人のほうを向いている） -->
+    <g transform="translate(112,0) rotate(40)">
+      <rect x="-96" y="-13" width="96" height="13" rx="4" fill="#FFFFFF" stroke="#1F2937" stroke-width="6"/>
+    </g>
+
+    <!-- 光の筋 -->
+    <g stroke="#E07A5F" stroke-width="6" stroke-linecap="round">
+      <line x1="26" y1="-48" x2="-4" y2="-58"/>
+      <line x1="8" y1="-18" x2="-24" y2="-26"/>
+    </g>
+  </g>
+</svg>
