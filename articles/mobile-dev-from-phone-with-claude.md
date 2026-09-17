@@ -1,5 +1,5 @@
 ---
-title: "iOSアプリ開発でノートPCを持ち歩かなくなった話"
+title: "モバイルアプリ開発でノートPCを持ち歩かなくなった話"
 emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["ClaudeCode", "iOS", "TestFlight"]
