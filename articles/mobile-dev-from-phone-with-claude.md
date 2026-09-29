@@ -44,7 +44,7 @@ Remote Controlは**ローカルのプロセスが生きている必要**があ�
 
 ## 手元から配信できるようにしておく
 
-外にいるとスマホをMacにつなげないので、実機に入れる経路を先に用意しておきます。iOSならTestFlight、AndroidならFirebase App DistributionやPlay Consoleの内部テスト・クローズドテストです。
+外にいるとスマホをMacにつなげないので、実機に入れる経路を先に用意しておきます。iOSならTestFlightやFirebase App Distribution、AndroidならFirebase App DistributionやPlay Consoleの内部テスト・クローズドテストです。
 
 大事なのは、**手元のMacからコマンドで配信できる状態にしておく**ことです。ここがGUIの操作を挟む状態のままだと、外から指示しても最後で止まります。
 
