@@ -104,3 +104,4 @@ graph TD
 
 - https://code.claude.com/docs/en/remote-control
 - https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases
+- https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device
