@@ -79,15 +79,15 @@ CAPTCHAのほうは、Devpostにハッカソンの提出を下書きしてもら
 ここまでのとおり、**スマホの中では何も動いていません。** ビルドもテストもgit操作も、走っているのは全部家のMacです。スマホがやっているのは、指示を送るのと、Macで起きたことを見ることだけです。
 
 ```mermaid
-graph TD
+graph LR
     Phone["iPhone<br/>Claude アプリで指示する<br/>実機で確かめる"]
     Mac["家の Mac<br/>Claude Code<br/>ビルド・テスト・配信"]
     TF["TestFlight"]
 
-    Phone -->|"指示<br/>（Anthropic のサーバー経由）"| Mac
+    Phone -->|"指示"| Mac
     Mac -->|"外にいるとき"| TF
     TF -->|"入れて触る"| Phone
-    Mac -->|"同じ Wi-Fi にいるとき<br/>ワイヤレスで直接"| Phone
+    Mac -.->|"同じ Wi-Fi にいるとき"| Phone
 ```
 
 なので「スマホで開発する」というより、**Macに指示を出して結果を受け取る口がスマホになる**、が近いです。クラウドで動くClaude Code on the webとはそこが違います。
