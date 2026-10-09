@@ -2,7 +2,7 @@
 title: "モバイルアプリ開発でノートPCを持ち歩かなくなった話"
 emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["ClaudeCode", "iOS", "TestFlight"]
+topics: ["AIエージェント", "AI駆動開発", "ClaudeCode", "iOS", "Android"]
 published: false
 ---
 
