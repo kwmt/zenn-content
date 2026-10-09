@@ -39,7 +39,7 @@ claude --remote-control   # --rc でも同じ
 
 ## 手元から配信できるようにしておく
 
-外にいるとスマホをMacにつなげないので、実機に入れる経路を先に用意しておきます。iOSならTestFlightやFirebase App Distribution、AndroidならFirebase App DistributionやPlay Consoleの内部テスト・クローズドテストです。
+外にいるとスマホをMacにつなげませんし、iOS SimulatorやAndroid Emulatorに入れたとしても、それをスマホから見ることができません[^remote-desktop]。なので、実機に入れる経路を先に用意しておきます。iOSならTestFlightやFirebase App Distribution、AndroidならFirebase App DistributionやPlay Consoleの内部テスト・クローズドテストです。
 
 大事なのは、**コマンドで配信できる状態にしておく**ことです。ここがGUIの操作を挟む状態のままだと、外から指示しても最後で止まります。
 
@@ -107,3 +107,5 @@ graph LR
 - https://code.claude.com/docs/en/remote-control
 - https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases
 - https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device
+
+[^remote-desktop]: スマホからリモートデスクトップでMacの画面を見られるようにしていれば、シミュレータやエミュレータも見られます。この記事ではその方法は使わない前提にしています。
